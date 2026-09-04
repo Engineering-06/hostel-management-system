@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rooms List</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+        }
+
+        .header {
+            background: #20263e;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .header a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .add-btn {
+            background: green;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 25px;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th {
+            background: #20263e;
+            color: white;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .edit {
+            color: blue;
+            text-decoration: none;
+        }
+
+        .delete {
+            color: red;
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <h2>🏠 Hostel Management System</h2>
+
+        <div>
+            <a href="/">Dashboard</a>
+            <a href="/students/">Students</a>
+            <a href="/logout/">Logout</a>
+        </div>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+
+    <div class="container">
+
+        <div class="top">
+
+            <h1>🏠 Rooms List</h1>
+
+            <a href="/rooms/add/" class="add-btn">
+                ➕ Add Room
+            </a>
+
+        </div>
+
+
+        <!-- ROOMS TABLE -->
+
+        <table>
+
+            <tr>
+                <th>Room Number</th>
+                <th>Capacity</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+
+            {% for room in rooms %}
+
+            <tr>
+
+                <td>{{ room.room_number }}</td>
+
+                <td>{{ room.capacity }}</td>
+
+                <td>
+                    {{ room.status }}
+                </td>
+
+                <td>
+
+                    <a class="edit"
+                       href="/rooms/edit/{{ room.id }}/">
+                        ✏️ Edit
+                    </a>
+
+                    |
+
+                    <a class="delete"
+                       href="/rooms/delete/{{ room.id }}/">
+                        🗑️ Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+                <td colspan="4">
+                    No rooms found. Please add a room.
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</body>
+</html>

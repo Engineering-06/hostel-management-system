@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Student</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .box {
+            background: white;
+            width: 500px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .delete {
+            background: #dc3545;
+            color: white;
+        }
+
+        .cancel {
+            text-decoration: none;
+            padding: 12px 25px;
+            background: #ddd;
+            color: black;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h2>Delete Student?</h2>
+
+        <p>
+            Are you sure you want to delete
+            <strong>{{ student.name }}</strong>?
+        </p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <button type="submit" class="delete">
+                Yes, Delete
+            </button>
+
+            <a href="/students/" class="cancel">
+                Cancel
+            </a>
+        </form>
+
+    </div>
+
+</body>
+</html>

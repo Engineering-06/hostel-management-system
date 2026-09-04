@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Students | Hostel Management</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #f4f6f9;
+        }
+
+        .header {
+            background: #20263e;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header a {
+            color: white;
+            text-decoration: none;
+            background: #667eea;
+            padding: 10px 18px;
+            border-radius: 7px;
+        }
+
+        .container {
+            padding: 30px;
+        }
+
+        .title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .add-btn {
+            background: #667eea;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 7px;
+            text-decoration: none;
+        }
+
+        table {
+            width: 100%;
+            background: white;
+            border-collapse: collapse;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #20263e;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f8f9ff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h2>🏠 Hostel Management</h2>
+
+        <a href="/">
+            Dashboard
+        </a>
+    </div>
+
+    <div class="container">
+
+        <div class="title">
+
+            <h1>Students</h1>
+<a href="/students/add/" class="add-btn">
+                + Add Student
+            </a>
+
+        </div>
+
+        <table>
+
+            <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Course</th>
+                <th>Branch</th>
+            </tr>
+
+            {% for student in students %}
+
+            <tr>
+                <td>{{ student.student_id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.phone }}</td>
+                <td>{{ student.course }}</td>
+                <td>{{ student.branch }}</td>
+            </tr>
+
+            {% empty %}
+
+            <tr>
+                <td colspan="6">
+                    No students found.
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</body>
+</html>

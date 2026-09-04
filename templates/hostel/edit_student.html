@@ -1,0 +1,164 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Student</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #f4f6f9;
+        }
+
+        .header {
+            background: #20263e;
+            color: white;
+            padding: 18px 40px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .form-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .buttons {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        button {
+            padding: 12px 22px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .cancel {
+            text-decoration: none;
+            padding: 12px 22px;
+            background: #ddd;
+            color: black;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h2>🏠 Hostel Management System</h2>
+    </div>
+
+    <div class="container">
+
+        <div class="form-box">
+
+            <h1>✏️ Edit Student</h1>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <label>Student ID</label>
+                <input type="text"
+                       name="student_id"
+                       value="{{ student.student_id }}"
+                       required>
+
+                <label>Name</label>
+                <input type="text"
+                       name="name"
+                       value="{{ student.name }}"
+                       required>
+
+                <label>Email</label>
+                <input type="email"
+                       name="email"
+                       value="{{ student.email }}"
+                       required>
+
+                <label>Phone</label>
+                <input type="text"
+                       name="phone"
+                       value="{{ student.phone }}"
+                       required>
+
+                <label>Course</label>
+                <input type="text"
+                       name="course"
+                       value="{{ student.course }}"
+                       required>
+
+                <label>Branch</label>
+                <input type="text"
+                       name="branch"
+                       value="{{ student.branch }}"
+                       required>
+
+                <label>Year</label>
+                <input type="number"
+                       name="year"
+                       value="{{ student.year }}"
+                       min="1"
+                       max="4"
+                       required>
+
+                <div class="buttons">
+
+                    <button type="submit">
+                        Update Student
+                    </button>
+
+                    <a href="/students/" class="cancel">
+                        Cancel
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

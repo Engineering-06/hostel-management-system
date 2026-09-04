@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hostel Management | Login</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            width: 380px;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            color: #444;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #667eea;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #667eea;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5568d9;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #888;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <div class="logo">🏠</div>
+
+    <h1>Hostel Management</h1>
+
+    <p class="subtitle">Login to your account</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Username</label>
+        <input
+            type="text"
+            name="username"
+            placeholder="Enter your username"
+            required
+        >
+
+        <label>Password</label>
+        <input
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+        >
+
+        <button type="submit">Login</button>
+    </form>
+
+    <div class="footer">
+        Hostel Management System
+    </div>
+
+</div>
+
+</body>
+</html>
