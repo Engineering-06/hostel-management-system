@@ -1,0 +1,219 @@
+﻿{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Hostel Management System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .login-container {
+            width: 400px;
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        form p {
+            margin-bottom: 15px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #667eea;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #667eea;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background: #5568d9;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #999;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .divider span {
+            padding: 0 12px;
+        }
+
+        .google-btn {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .google-btn:hover {
+            background: #f7f7f7;
+            border-color: #bbb;
+        }
+
+        .google-icon {
+            font-size: 22px;
+            font-weight: bold;
+            color: #4285F4;
+        }
+
+        .signup {
+            text-align: center;
+            margin-top: 25px;
+            color: #777;
+        }
+
+        .signup a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .errorlist {
+            color: #d93025;
+            margin-bottom: 10px;
+            list-style: none;
+            font-size: 14px;
+        }
+
+        .forgot {
+            text-align: right;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+
+        .forgot a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <div class="logo">🏨</div>
+
+    <h1>Welcome Back</h1>
+    <p class="subtitle">Hostel Management System</p>
+
+    {% if form.non_field_errors %}
+        {{ form.non_field_errors }}
+    {% endif %}
+
+    <form method="POST" action="{% url 'account_login' %}">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        {% if redirect_field_value %}
+            <input type="hidden"
+                   name="{{ redirect_field_name }}"
+                   value="{{ redirect_field_value }}">
+        {% endif %}
+
+        <button type="submit" class="login-btn">
+            Login
+        </button>
+    </form>
+
+    <div class="divider">
+        <span>OR</span>
+    </div>
+
+    <a href="{% provider_login_url 'google' process='login' %}"
+       class="google-btn">
+        <span class="google-icon">G</span>
+        Login with Google
+    </a>
+
+    <div class="signup">
+        Don't have an account?
+        <a href="{% url 'account_signup' %}">Sign Up</a>
+    </div>
+
+</div>
+
+</body>
+</html>

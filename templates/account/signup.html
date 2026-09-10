@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Create Account | Hostel Management</title>
+
+<style>
+
+body {
+    margin:0;
+    font-family:Arial;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(135deg,#667eea,#764ba2);
+}
+
+.card {
+    width:430px;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:22px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.3);
+}
+
+h1 {
+    text-align:center;
+}
+
+p {
+    color:#777;
+    text-align:center;
+}
+
+input {
+    width:100%;
+
+    padding:12px;
+
+    margin:6px 0 14px;
+
+    border:1px solid #ddd;
+
+    border-radius:9px;
+}
+
+button {
+    width:100%;
+
+    padding:13px;
+
+    border:0;
+
+    border-radius:9px;
+
+    background:linear-gradient(135deg,#667eea,#764ba2);
+
+    color:white;
+
+    font-weight:bold;
+}
+
+a {
+    display:block;
+
+    text-align:center;
+
+    margin-top:18px;
+
+    color:#667eea;
+
+    text-decoration:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>?? Create Account</h1>
+
+<p>Join Hostel Management System</p>
+
+<form method="post">
+
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<button type="submit">
+Create Account
+</button>
+
+</form>
+
+<a href="{% url 'account_login' %}">
+Already have an account? Sign in
+</a>
+
+</div>
+
+</body>
+
+</html>
